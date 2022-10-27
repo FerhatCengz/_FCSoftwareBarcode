@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      sizes="144x144"
+      href="https://scanapp.org/assets/svg/log_sq-144.jpg"
+    />
+    <!-- Primary Meta Tags -->
+    <title>FC Yazılım Barkod</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.35/sweetalert2.css"
+      integrity="sha512-e+TwvhjDvKqpzQLJ7zmtqqz+5jF9uIOa+5s1cishBRfmapg7mqcEzEl44ufb04BXOsEbccjHK9V0IVukORmO8w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <meta name="title" content="Free online barcode and QR code scanner" />
+    <meta
+      name="description"
+      content="Free online barcode and QR code scanner - scan directly on your web browser using camera or images saved on your device. Works well on smart phones as well as PC or Mac."
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://scanapp.org/" />
+    <meta
+      property="og:title"
+      content="Free online barcode and QR code scanner"
+    />
+    <meta
+      property="og:description"
+      content="Free online barcode and QR code scanner - scan directly on your web browser using camera or images saved on your device. Works well on smart phones as well as PC or Mac."
+    />
+    <meta
+      property="og:image"
+      content="https://scanapp.org/assets/svg/scanapp-logo.png"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://scanapp.org/" />
+    <meta
+      property="twitter:title"
+      content="Free online barcode and QR code scanner"
+    />
+    <meta
+      property="twitter:description"
+      content="Free online barcode and QR code scanner - scan directly on your web browser using camera or images saved on your device. Works well on smart phones as well as PC or Mac."
+    />
+    <meta
+      property="twitter:image"
+      content="https://scanapp.org/assets/svg/scanapp-logo.png"
+    />
+
+    <!-- PWA -->
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="manifest" href="https://scanapp.org/assets/manifest.json" />
+
+    <!-- Datatable css -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-2KZEP7DPYH"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-2KZEP7DPYH");
+    </script>
+
+    <link rel="preload" href=https://scanapp.org//assets/main.css as="style">
+    <link rel="stylesheet" href=https://scanapp.org//assets/main.css>
+
+    <link rel="canonical" href="https://scanapp.org" />
+    <link rel="preload" href=https://scanapp.org/assets/app.css as="style">
+    <link rel="stylesheet" href="https://scanapp.org/assets/app.css" />
+    <base target="_parent" />
+
+    <link rel="canonical" href="https://scanapp.org" />
+  </head>
+  <body data-instant-allow-query-string data-instant-allow-external-links>
+    <div>
+      <div id="scanapp-top-container">
+        <div id="scanapp-container">
+          <div id="scanner">
+            <div id="logo">
+              <i class="lead">FC YAZILIM</i>
+            </div>
+            <div id="reader"></div>
+            <div class="empty"></div>
+          </div>
+          <div id="workspace">
+            <div id="result">
+              <div class="workspace-header">Taranan Sonuç</div>
+              <div id="no-result-container">Sonuç almak için tarayın</div>
+              <div id="new-scanned-result">
+                <div class="header">
+                  New <span id="scan-result-code-type">{code}</span> detected!
+                </div>
+                <div class="section">
+                  <div class="image" id="scan-result-image"></div>
+                  <div class="data">
+                    <table id="result_table">
+                      <tr>
+                        <!-- <td>Parsed</td> -->
+                        <td colspan="2">
+                          <div>
+                            <div class="badge">
+                              <div class="badge-icon">
+                                <span><b>Type</b></span>
+                              </div>
+                              <div class="badge-text">
+                                <span id="scan-result-badge-body">{type}</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div id="scan-result-parsed">
+                            {parsed result here}
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Actions</td>
+                        <td>
+                          <button class="btn btn-success" id="barcodeSave">
+                            Kaydet
+                          </button>
+                          <img
+                            class="action_image"
+                            id="action-share"
+                            src="https://scanapp.org/assets/svg/share-svgrepo-com.svg"
+                          />
+                          <img
+                            class="action_image"
+                            id="action-copy"
+                            src="https://scanapp.org/assets/svg/copy-svgrepo-com.svg"
+                          />
+                          <img
+                            class="action_image"
+                            id="action-payment"
+                            src="https://scanapp.org/assets/svg/coin-svgrepo-com.svg"
+                            style="display: none"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Text</td>
+                        <td style="word-break: break-word">
+                          <div id="scan-result-text">{text result here}</div>
+                        </td>
+                      </tr>
+                    </table>
+                    <div id="body-footer">
+                      <button id="scan-result-close">
+                        Close and scan another
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="history">
+              <div class="workspace-header">Scan History</div>
+              <div id="no-result-container">No scans in history</div>
+              <div id="history-list"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Datatable -->
+        <div>
+          <div class="d-flex justify-content-center mt-2 mb-2">
+            <button class="btn btn-danger" id="deleteAll">Tümünü Sil</button>
+          </div>
+
+          <table class="table table-hover text-center">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">Barkod No</th>
+              </tr>
+            </thead>
+            <tbody id="datatableTbody"></tbody>
+          </table>
+        </div>
+
+        <div id="footer"></div>
+      </div>
+
+      <div class="banners-container">
+        <div class="banners">
+          <div class="banner error">
+            <div class="banner-icon">
+              <i
+                data-eva="alert-circle-outline"
+                data-eva-fill="#ffffff"
+                data-eva-height="48"
+                data-eva-width="48"
+              ></i>
+            </div>
+            <div class="banner-message" id="banner-error-message">{}</div>
+            <div class="banner-close" onclick="hideBanners()">
+              <i data-eva="close-outline" data-eva-fill="#ffffff"></i>
+            </div>
+          </div>
+          <div class="banner success">
+            <div class="banner-icon">
+              <i
+                data-eva="checkmark-circle-outline"
+                data-eva-fill="#ffffff"
+                data-eva-height="48"
+                data-eva-width="48"
+              ></i>
+            </div>
+            <div class="banner-message" id="banner-success-message">{}</div>
+            <div class="banner-close" onclick="hideBanners()">
+              <i data-eva="close-outline" data-eva-fill="#ffffff"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="iframe-alert" style="display: none">
+        <div id="iframe-alert-image">
+          <img src="https://scanapp.org/assets/svg/alert-svgrepo-com.svg" />
+        </div>
+        <div id="iframe-alert-subimage">
+          <img src="https://scanapp.org/assets/svg/scanapp.svg" />
+        </div>
+        <div id="iframe-alert-section">
+          The scanner is powered using
+          <a href="https://scanapp.org">scanapp.org</a>
+        </div>
+        <div id="iframe-alert-actions">
+          <div>
+            Scan with ad-free experience using
+            <a href="https://scanapp.org">scanapp.org</a>
+          </div>
+          <br />
+          <div>
+            <button id="iframe-alert-actions-navigate">
+              Go to scanapp.org
+            </button>
+            or
+            <button id="iframe-alert-actions-continue">
+              Continue here (5)
+            </button>
+          </div>
+        </div>
+        <!-- ScanAppAntiEmbedBottomAd -->
+        <div id="iframe-ad">
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6209792783516879"
+            crossorigin="anonymous"
+          ></script>
+          <ins
+            class="adsbygoogle"
+            style="display: block"
+            data-ad-client="ca-pub-6209792783516879"
+            data-ad-slot="4131295088"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script defer="defer" src="assets/eva.min.js" onload="eva.replace()"></script>
+  <script defer="defer" src="assets/html5-qrcode.min.v2.2.4.js"></script>
+  <script defer="defer" src="assets/app.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.35/sweetalert2.min.js"
+    integrity="sha512-MmPnuWhEes/JL9MZGGn+lYFQc8M0bwX/VTLXX+Y9GcSPKGjeo9mEiFrcBqyVJ0AJAyuoW71UwTQvgeSU7TK5sw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+
+  <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase.js"></script>
+  <script src="app.js"></script>
+</html>
